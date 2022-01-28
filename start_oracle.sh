@@ -1,0 +1,1 @@
+nerdctl run --name oracle-xe -d -p 1521:1521 -e ORACLE_PASSWORD=tiger gvenzl/oracle-xe -v ~/Oracle/oradata:/opt/oracle/oradata
