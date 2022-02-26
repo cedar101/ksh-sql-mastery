@@ -54,10 +54,11 @@ SELECT depart, COUNT(*), MAX(joindate), AVG(score) FROM staff GROUP BY depart;
 SELECT gender, AVG(salary) FROM staff GROUP BY gender;
 
 SELECT "name", SUM(salary) FROM staff GROUP BY "name";
+SELECT "name", salary FROM staff; -- GROUP BY "name";
 
-SELECT depart, gender, COUNT(*) FROM staff GROUP BY depart, gender;
+SELECT depart, gender, COUNT(*) FROM staff GROUP BY depart, gender ORDER BY depart, gender;
 
-SELECT gender, depart, COUNT(*) FROM staff GROUP BY gender, depart;
+SELECT gender, depart, COUNT(*) FROM staff GROUP BY gender, depart ORDER BY gender, depart;
 
 SELECT depart, gender, COUNT(*) FROM staff GROUP BY depart, gender 
 ORDER BY depart, gender;

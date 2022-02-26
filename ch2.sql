@@ -1,16 +1,22 @@
--------------------------------------------------
+DROP DATABASE test;
+
+CREATE DATABASE test CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+-- -----------------------------------------------
 -- 2장
-DROP TABLE city;
+-- DROP TABLE city;
 
 
 CREATE TABLE city
 (
-	"name" VARCHAR2(30) PRIMARY KEY,
-	area INT NULL ,
+	-- id INT PRIMARY KEY,
+    `name` VARCHAR(30) NOT NULL,
+	area INT NULL,
 	population10k INT NULL ,
-	metro NUMBER(1,0) NULL,
-	region VARCHAR2(30) NOT NULL
-);
+	metro BIT NOT NULL,
+	region VARCHAR(30) NOT NULL
+); -- DEFAULT CHARSET=utf8mb4;
+
 
 INSERT INTO city VALUES ('서울',605,974,1,'서울');
 INSERT INTO city VALUES ('부산',765,342,1,'부산');
@@ -23,6 +29,10 @@ INSERT INTO city VALUES ('홍천',1819,7,0,'강원');
 
 SELECT * FROM city;
 
+
+
+DROP TABLE staff; 
+
 CREATE TABLE staff
 (
 	"name" CHAR (15) PRIMARY KEY,
@@ -30,11 +40,10 @@ CREATE TABLE staff
 	gender CHAR(3) NOT NULL,
 	joindate DATE NOT NULL,
 	grade CHAR(12) NOT NULL,
-	salary INT NOT NULL,
+	salary INT DEFAULT 280 NOT NULL,
 	score DECIMAL(5,2) NULL
 );
 
-DELETE staff;
 
 INSERT INTO staff VALUES ('김유신','총무부','남',TO_DATE('2000-02-03', 'YYYY-MM-DD'),'이사',420,88.8);
 INSERT INTO staff VALUES ('유관순','영업부','여',TO_DATE('2009-03-01', 'YYYY-MM-DD'),'과장',380,NULL);

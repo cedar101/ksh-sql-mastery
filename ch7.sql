@@ -1,9 +1,9 @@
 -------------------------------------------------
 -- 7장
 
-INSERT INTO city VALUES ('평양','엄청 넓음','꽤 많을걸','n','조선인민민주주의공화국');
+INSERT INTO city VALUES ('평양','엄청 넓음','꽤 많을걸',0,'조선인민민주주의공화국');
 
-INSERT INTO city ("name", population, metro, region) VALUES ('울산', 114, 'y', '경상');
+INSERT INTO city ("name", population, metro, region) VALUES ('울산', 114, 1, '경상');
 INSERT INTO city ("name", metro, region) VALUES ('삼척', 'n', '강원');
 
 INSERT INTO city (area, population, metro, region) VALUES (456, 123, 'n', '충청');

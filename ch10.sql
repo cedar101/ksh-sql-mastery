@@ -4,7 +4,7 @@
 
 CREATE TABLE car
 (
-	car VARCHAR(30) NOT NULL,		-- 이름
+	car VARCHAR(30) PRIMARY key,		-- 이름
 	capacity INT NOT NULL,			-- 배기량
 	price INT NOT NULL,			-- 가격
 	maker VARCHAR(30) NOT NULL		-- 제조사
@@ -13,7 +13,9 @@ CREATE TABLE car
 INSERT INTO car (car, capacity, price, maker) VALUES ('소나타', 2000, 2500, '현대');
 INSERT INTO car (car, capacity, price, maker) VALUES ('티볼리', 1600, 2300, '쌍용');
 INSERT INTO car (car, capacity, price, maker) VALUES ('A8', 3000, 4800, 'Audi');
-INSERT INTO car (car, capacity, price, maker) VALUES ('SM5', 2000, 2600, '삼성');
+INSERT INTO car (car, capacity, price, maker) VALUES ('SM5', 2000, 2600, '르노삼성');
+
+SELECT * FROM car;
 
 CREATE TABLE maker
 (
@@ -27,13 +29,15 @@ INSERT INTO maker (maker, factory, domestic) VALUES ('쌍용', '청주', 'y');
 INSERT INTO maker (maker, factory, domestic) VALUES ('Audi', '독일', 'n');
 INSERT INTO maker (maker, factory, domestic) VALUES ('기아', '서울', 'y');
 
+SELECT * FROM maker;
+
 SELECT * FROM car, maker;
 
-SELECT * FROM car CROSS JOIN maker;
+SELECT car, CAPACITY, price, car.maker AS car_maker, maker.maker AS maker_maker, factory, domestic  FROM car CROSS JOIN maker;
 
 SELECT * FROM car, maker WHERE car.maker = maker.maker;
 
-SELECT car.car, car.price, maker.maker, maker.factory FROM car, maker 
+SELECT car.car, car.price, maker.maker, maker.factory, DOMESTIC  FROM car, maker 
 WHERE car.maker = maker.maker;
 
 SELECT car.*, maker.factory FROM car, maker WHERE car.maker = maker.maker;
@@ -46,13 +50,13 @@ SELECT C.car, C.price, M.maker, M.factory FROM car C, maker M WHERE C.maker = M.
 
 SELECT A.car, A.price, B.maker, B.factory FROM car A, maker B WHERE A.maker = B.maker;
 
-SELECT C.car, C.price, M.maker, M.factory FROM car C INNER JOIN maker M 
+SELECT C.car, C.price, M.maker, M.factory FROM car C JOIN maker M 
 ON C.maker = M.maker;
 
-SELECT C.car, C.price, M.maker, M.factory FROM maker M INNER JOIN car C 
+SELECT C.car, C.price, M.maker, M.factory FROM maker M JOIN car C 
 ON M.maker = C.maker;
 
-SELECT C.car, C.price, maker, M.factory FROM car C INNER JOIN maker M USING(maker);
+SELECT C.car, C.price, maker, M.factory FROM car C JOIN maker M USING(maker);
 
 SELECT C.car, C.price, M.maker, M.factory FROM car C LEFT OUTER JOIN maker M 
 ON C.maker = M.maker;
